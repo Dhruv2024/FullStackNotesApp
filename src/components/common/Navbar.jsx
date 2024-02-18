@@ -51,7 +51,7 @@ export const Navbar = () => {
                     <ul className='flex gap-4'>
                         {
                             navEle.map((ele, index) => (
-                                <Link to={ele?.linkTo}>
+                                <Link to={ele?.linkTo} key={index}>
                                     <li className={`${matchRoute(ele?.linkTo) ? "text-red-500" : "text-white"}`}>
                                         {ele.topic}
                                     </li>
