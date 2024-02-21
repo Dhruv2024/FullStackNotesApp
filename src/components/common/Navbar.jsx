@@ -1,7 +1,8 @@
 import React from 'react'
-import { Link, matchPath, useLocation } from 'react-router-dom'
+import { Link, matchPath, useLocation, useNavigate } from 'react-router-dom'
 import Logo from '../../assets/logo.png'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { Logout } from '../../services/operations/authAPI'
 export const Navbar = () => {
     const navEle = [
         {
@@ -30,6 +31,8 @@ export const Navbar = () => {
     ]
 
     const location = useLocation();
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
     const matchRoute = (route) => {
         return matchPath({ path: route }, location.pathname)
     }
@@ -40,8 +43,8 @@ export const Navbar = () => {
 
     const { token } = useSelector((state) => state.auth)
     return (
-        <div className='bg-black text-white'>
-            <div className='w-[9/11] flex justify-around py-4 items-center'>
+        <div className='bg-black text-white w-[100vw]'>
+            <div className='md:w-[9/11] flex justify-around py-4 items-center'>
                 <Link to={"/"}>
                     <div className='select-none cursor-pointer'>
                         <img src={Logo} alt='HomeLogo' height={90} width={90} />
@@ -74,11 +77,18 @@ export const Navbar = () => {
                 }
                 {
                     (token !== null) &&
-                    <Link to={"/dashboard/my-notes"}>
-                        <div className='text-white bg-slate-700 py-2 px-2 cursor-pointer rounded-lg hover:scale-110 transit duration-300'>
-                            Go to DashBoard
+                    <div className='flex gap-x-3'>
+                        <Link to={"/dashboard/my-notes"}>
+                            <div className='text-white bg-slate-700 py-2 px-2 cursor-pointer rounded-lg hover:scale-110 transit duration-300'>
+                                Go to DashBoard
+                            </div>
+                        </Link>
+                        <div className='text-white bg-slate-700 py-2 px-2 cursor-pointer rounded-lg hover:scale-110 transit duration-300' onClick={() => {
+                            dispatch(Logout(navigate, false))
+                        }}>
+                            Logout
                         </div>
-                    </Link>
+                    </div>
                 }
 
             </div>

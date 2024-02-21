@@ -52,6 +52,7 @@ exports.createUser = async (req, res) => {
             name,
             email,
             password: hashedPassword,
+            userImage: `https://api.dicebear.com/5.x/initials/svg?seed=${name}`,
         });
 
         return res.status(200).json({
@@ -113,7 +114,8 @@ exports.login = async (req, res) => {
                 token,
                 user: {
                     name: user.name,
-                    email: user.email
+                    email: user.email,
+                    userImage: user.userImage,
                 },
                 message: `User Login Success`,
             });

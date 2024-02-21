@@ -41,12 +41,12 @@ export const Signup = () => {
         });
     }
     return (
-        <div className='flex items-center justify-center gap-20 bg-slate-900 h-[89vh] text-slate-300'>
+        <div className='flex items-center justify-center md:gap-20 bg-slate-900 md:h-[89vh] text-slate-300 md:flex-row flex-col-reverse gap-12 md:pt-0 pt-5'>
             {/* <button onClick={() => {
                 dispatch(sendOtp("adhruv674@gmail.com", navigate));
             }}>see</button> */}
 
-            <form onSubmit={handleSubmit} className='flex flex-col justify-center items-center h-[80vh] gap-4'>
+            <form onSubmit={handleSubmit} className='flex flex-col justify-center items-center md:h-[80vh] gap-4'>
                 <div className='flex flex-col gap-3'>
                     <label>
                         <p className='ml-2'>Name: </p>

@@ -9,6 +9,8 @@ import { Notes } from './pages/Notes'
 import { PrivateRoute } from './components/core/Auth/PrivateRoute'
 import { OpenRoute } from './components/core/Auth/OpenRoute'
 import { NoteUpdate } from './components/core/ParticularNotePage/NoteUpdate'
+import { About } from './pages/About'
+import { Contact } from './pages/Contact'
 // import { useEffect } from 'react'
 
 function App() {
@@ -27,6 +29,8 @@ function App() {
       <Navbar />
       <Routes>
         <Route path='/' element={<Home />} />
+        <Route path='/about' element={<About />} />
+        <Route path='/contact' element={<Contact />} />
         <Route path='/signup' element={
           <OpenRoute>
             <Signup />

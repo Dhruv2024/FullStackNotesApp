@@ -25,13 +25,13 @@ export const Notes = () => {
                     "Content-Type": "multipart/form-data",
                     Authorisation: `Bearer ${token}`,
                 });
-            console.log("RESPONSE OF GET_NOTE --> ", response);
+            // console.log("RESPONSE OF GET_NOTE --> ", response);
 
             setNotes(response.data.notes)
             // toast.success("Notes fetched successfully");
         }
         catch (err) {
-            console.log("GET NOTE ERROR............", err)
+            // console.log("GET NOTE ERROR............", err)
             if (err.response.data?.tokenExpire) {
                 dispatch(Logout(navigate, true));
                 return;
