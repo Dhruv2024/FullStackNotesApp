@@ -27,7 +27,7 @@ export const NoteInput = ({ setTemp, temp, loading }) => {
     }
     return (
         <div className='flex items-center justify-center mt-3'>
-            <form onSubmit={handleSubmit} className='flex flex-col w-[35%]'>
+            <form onSubmit={handleSubmit} className='flex flex-col md:w-[35%] w-[80vw]'>
                 <input
                     type='text'
                     required

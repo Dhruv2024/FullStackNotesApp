@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { fetchSingleNote, updateNote } from '../../../services/operations/notesAPI';
 import { useDispatch, useSelector } from 'react-redux';
+import { IoArrowBack } from "react-icons/io5";
 
 export const NoteUpdate = () => {
     const location = useLocation();
@@ -61,9 +62,19 @@ export const NoteUpdate = () => {
                 loading ? (
                     <div className='spinner'></div>
                 ) : (
-                    <div className='w-[98vw] flex justify-center'>
-                        <form onSubmit={handleSubmit} className='flex flex-col justify-between'>
-                            <div className='mt-5'>
+                    <div className='md:w-[98vw] flex md:justify-center pt-5'>
+                        <form onSubmit={handleSubmit} className='flex flex-col md:justify-between md:w-[98vw] items-center w-[100vw]'>
+                            <div className='flex justify-between items-center w-[95vw]'>
+                                {/* back button */}
+                                <div onClick={() => {
+                                    navigate(-1)
+                                }}>
+                                    <IoArrowBack className='text-3xl text-white cursor-pointer' />
+                                </div>
+                                {/* button */}
+                                <button type='submit' className='bg-yellow-300 py-2 px-2 rounded-lg hover:bg-yellow-400 ml-4'>Save Changes</button>
+                            </div>
+                            <div className='mt-5 md:w-[85%] lg:w-[95vw]'>
                                 {/* title */}
                                 <input
                                     type='text'
@@ -71,11 +82,9 @@ export const NoteUpdate = () => {
                                     name='title'
                                     onChange={handleChange}
                                     required
-                                    className='w-[80%] h-[10vh] outline-none pl-3 border-2 rounded-md'
+                                    className='md:w-[100%] h-[10vh] outline-none pl-3 border-2 rounded-md w-[92vw]'
                                 />
                                 {/* {notesDetail.title} */}
-                                {/* button */}
-                                <button type='submit' className='bg-yellow-300 py-2 px-2 rounded-lg hover:bg-yellow-400 ml-4'>Save Changes</button>
                             </div>
                             <div className='pb-4'>
                                 {/* description */}
@@ -86,7 +95,7 @@ export const NoteUpdate = () => {
                                     onChange={handleChange}
                                     cols={140}
                                     rows={18}
-                                    className='resize-y mt-4 outline-none border-2 pl-3 rounded-md'
+                                    className='resize-y mt-4 outline-none border-2 pl-3 rounded-md md:w-[100%] w-[92vw] lg:w-[95vw] h-[73vh]'
                                     required
                                 />
                             </div>

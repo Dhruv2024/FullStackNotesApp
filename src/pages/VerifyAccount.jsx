@@ -50,7 +50,7 @@ export const VerifyAccount = () => {
                                     value={otp}
                                     onChange={(e) => { setOtp(e.target.value) }}
                                     placeholder='Enter OTP here'
-                                    className='border-2 border-black rounded-md w-96 p-2 border-b-4 border-b-emerald-400 text-slate-800'
+                                    className='border-2 border-black rounded-md md:w-96 w-[95vw] p-2 border-b-4 border-b-emerald-400 text-slate-800 outline-none'
                                 />
                                 <button type='submit' className="bg-yellow-400 text-black px-20 py-2 rounded-md mt-6 hover:scale-110 transition-all duration-300 font-medium">Verify Email</button>
                             </form>
