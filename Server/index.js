@@ -19,6 +19,7 @@ dbConnect();
 
 app.use(
     cors({
+        // origin: "http://localhost:5173",
         origin: "https://notesync-black.vercel.app",
         credentials: true,
     })

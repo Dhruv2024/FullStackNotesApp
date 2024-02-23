@@ -134,6 +134,7 @@ exports.getAllNotes = async (req, res) => {
 exports.getNoteDetail = async (req, res) => {
     try {
         const userId = req.user.id;
+        const email = req.user.email;
         if (!userId) {
             return res.status(401).json({
                 success: false,
@@ -148,18 +149,26 @@ exports.getNoteDetail = async (req, res) => {
                 message: "Note id not present",
             })
         }
-        const note = await Notes.findById({ _id: noteId });
+        const note = await Notes.findById({ _id: noteId }).populate("createdBy").exec();
         if (!note) {
             return res.status(400).json({
                 success: false,
                 message: "Note doesn't Exist",
             })
         }
-
+        if (note.createdBy.email !== email) {
+            return res.status(404).json({
+                success: false,
+                message: "Note Not found",
+            })
+        }
         return res.status(200).json({
             success: true,
             message: "Note fetched successfully",
-            note
+            note: {
+                title: note.title,
+                description: note.description,
+            }
         })
     }
     catch (err) {

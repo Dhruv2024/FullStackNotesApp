@@ -19,7 +19,11 @@ export const NoteUpdate = () => {
         const temp = location.pathname.split("/");
         const noteId = temp[temp.length - 1];
         // console.log(noteId);
-        const result = await dispatch(fetchSingleNote(noteId, token))
+        const result = await dispatch(fetchSingleNote(noteId, token));
+        if (!result) {
+            navigate("/dashboard/my-notes")
+            return;
+        }
         setNotesDetail(result);
         setLoading(false);
     }

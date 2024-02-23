@@ -89,6 +89,7 @@ export function fetchSingleNote(noteId, token) {
         catch (err) {
             console.log("FETCH SINGLE NOTE ERROR............", err)
             toast.error("Could Not Fetch Note")
+            return null;
         }
     }
 }
