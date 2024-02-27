@@ -11,19 +11,19 @@ import { OpenRoute } from './components/core/Auth/OpenRoute'
 import { NoteUpdate } from './components/core/ParticularNotePage/NoteUpdate'
 import { About } from './pages/About'
 import { Contact } from './pages/Contact'
-// import { useEffect } from 'react'
+import { useEffect } from 'react'
 
 function App() {
-  // useEffect(() => {
-  //   const handleContextmenu = e => {
-  //     e.preventDefault()
-  //   }
-  //   document.addEventListener('contextmenu', handleContextmenu)
-  //   return function cleanup() {
-  //     document.removeEventListener('contextmenu', handleContextmenu)
-  //   }
+  useEffect(() => {
+    const handleContextmenu = e => {
+      e.preventDefault()
+    }
+    document.addEventListener('contextmenu', handleContextmenu)
+    return function cleanup() {
+      document.removeEventListener('contextmenu', handleContextmenu)
+    }
 
-  // }, [])
+  }, [])
   return (
     <div className=''>
       <Navbar />
